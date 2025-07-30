@@ -36,9 +36,12 @@ const Books = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const res = await axios.get('https://localhost:7193/api/Book', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await axios.get(
+          'https://rlaijbartary1.onrender.com/api/Book',
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         setBooks(res.data);
       } catch (err) {
         console.error('Error fetching books:', err);
@@ -50,10 +53,10 @@ const Books = () => {
     const fetchDropdowns = async () => {
       try {
         const [authorRes, genreRes] = await Promise.all([
-          axios.get('https://localhost:7193/api/Author', {
+          axios.get('rlaijbartary1.onrender.com/api/Author', {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get('https://localhost:7193/api/Genre', {
+          axios.get('https://rlaijbartary1.onrender.com/api/Genre', {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
@@ -97,9 +100,12 @@ const Books = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this book?')) {
       try {
-        await axios.delete(`https://localhost:7193/api/Book/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        await axios.delete(
+          `https://rlaijbartary1.onrender.com/api/Book/${id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         toast.success('🗑️ Book deleted successfully!');
         setBooks(books.filter((b) => b.bookId !== id));
       } catch (err) {
@@ -115,7 +121,7 @@ const Books = () => {
     try {
       if (isEditing) {
         await axios.put(
-          'https://localhost:7193/api/Book',
+          'https://rlaijbartary1.onrender.com/api/Book',
           {
             bookId: editBookId,
             ...formData,
@@ -127,9 +133,13 @@ const Books = () => {
         );
         toast.success('✅ Book updated successfully!');
       } else {
-        await axios.post('https://localhost:7193/api/Book', formData, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        await axios.post(
+          'https://rlaijbartary1.onrender.com/api/Book',
+          formData,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         toast.success('📚 Book added successfully!');
       }
 
@@ -137,9 +147,12 @@ const Books = () => {
       setIsEditing(false);
       setEditBookId(null);
 
-      const res = await axios.get('https://localhost:7193/api/Book', {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await axios.get(
+        'https://rlaijbartary1.onrender.com/api/Book',
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setBooks(res.data);
     } catch (err) {
       console.error('Error submitting form:', err);
