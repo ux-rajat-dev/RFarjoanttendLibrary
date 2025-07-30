@@ -26,7 +26,7 @@ const UserManagement = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get('https://localhost:7193/api/user', {
+      const res = await axios.get('https://rlaijbartary1.onrender.com/api/user', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers(res.data);
@@ -62,7 +62,7 @@ const UserManagement = () => {
       try {
         // Perform the delete request
         const response = await axios.delete(
-          `https://localhost:7193/api/user/${id}`,
+          `https://rlaijbartary1.onrender.com/api/user/${id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -96,12 +96,12 @@ const UserManagement = () => {
       if (isEditing) {
         payload.userId = editUserId;
         delete payload.passwordHash; // avoid changing password on edit
-        await axios.put('https://localhost:7193/api/user', payload, {
+        await axios.put('https://rlaijbartary1.onrender.com/api/user', payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
         toast.success('✅ User updated successfully!');
       } else {
-        await axios.post('https://localhost:7193/api/user', payload, {
+        await axios.post('https://rlaijbartary1.onrender.com/api/user', payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
         toast.success('✅ User added successfully!');
