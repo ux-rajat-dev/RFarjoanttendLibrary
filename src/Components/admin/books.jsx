@@ -53,7 +53,7 @@ const Books = () => {
     const fetchDropdowns = async () => {
       try {
         const [authorRes, genreRes] = await Promise.all([
-          axios.get('rlaijbartary1.onrender.com/api/Author', {
+          axios.get('https://rlaijbartary1.onrender.com/api/Author', {
             headers: { Authorization: `Bearer ${token}` },
           }),
           axios.get('https://rlaijbartary1.onrender.com/api/Genre', {
